@@ -54,8 +54,8 @@ module "in28minutes-cluster" {
       desired_capacity = 2
       min_capacity  = 2
     }
-  ]
-}*/
+  ]*/
+}
 
 data "aws_eks_cluster" "cluster" {
   name = module.in28minutes-cluster.cluster_id
