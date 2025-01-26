@@ -14,7 +14,7 @@ required_providers {
   backend "s3" {
     bucket = "mybucket" # Will be overridden from build
     key    = "path/to/my/key" # Will be overridden from build
-    region = "us-east-1"
+    region = "ap-south-1"
   }
 }
 
