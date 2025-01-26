@@ -51,8 +51,8 @@ module "in28minutes-cluster" {
   cluster_name    = "in28minutes-cluster"
   cluster_version = "1.29"
 
-  #subnet_ids         = ["subnet-0ee9ecef193565c46"] #CHANGE # Donot choose subnet from us-east-1e
-  subnets = data.aws_subnet_ids.subnets.ids
+  subnet_ids         = ["subnet-0ea4e42776a10229f"] #CHANGE # Donot choose subnet from us-east-1e
+  #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
   #vpc_id         = "vpc-1234556abcdef"
 
