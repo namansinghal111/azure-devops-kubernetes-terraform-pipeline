@@ -12,11 +12,13 @@ required_providers {
       version = "5.84.0"
     }
  }
+required_version = ">= 0.14.0"
  backend "s3" {
     bucket = "mybucket" # Will be overridden from build
     key    = "path/to/my/key" # Will be overridden from build
     region = "us-east-1"
   }
+
 }
 
 resource "aws_default_vpc" "default" {
@@ -31,7 +33,7 @@ provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.cluster.token
-  version                = "~> 2.12"
+  #version                = "~> 2.12"
 }
 
 module "in28minutes-cluster" {
