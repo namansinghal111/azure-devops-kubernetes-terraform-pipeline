@@ -25,19 +25,22 @@ resource "aws_default_vpc" "default" {
 
 }
 
-data "aws_eks_cluster" "example" {
-   name = "in28minutes-cluster"
- }
+### Uncomment this section after cluster creation line numbers 25 to 31 ###
+#data "aws_eks_cluster" "example" {
+#   name = "in28minutes-cluster"
+# }
 
-data "aws_eks_cluster_auth" "example" {
-  name = "in28minutes-cluster"
-}
+#data "aws_eks_cluster_auth" "example" {
+#  name = "in28minutes-cluster"
+#}
+### Uncomment this section after cluster creation ###
 
-#Get token to connect to Kubernetes
 provider "kubernetes" {
-  host                   = data.aws_eks_cluster.example.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.example.certificate_authority[0].data)
-  token                  = data.aws_eks_cluster_auth.example.token
+### Uncomment this section after cluster creation line numbers 36 to 38###
+#  host                   = data.aws_eks_cluster.example.endpoint
+#  cluster_ca_certificate = base64decode(data.aws_eks_cluster.example.certificate_authority[0].data)
+#  token                  = data.aws_eks_cluster_auth.example.token
+### Uncomment this section after cluster creation ###
 }
 
 
@@ -48,7 +51,7 @@ module "in28minutes-cluster" {
   cluster_name    = "in28minutes-cluster"
   cluster_version = "1.29"
 
-  subnet_ids         = ["subnet-0ba16627", "subnet-02db6b4a", "subnet-e08479ba"] #CHANGE # Donot choose subnet from us-east-1e
+  subnet_ids         = ["subnet-04ebbd141cb8a840b", "subnet-0772ee1113dd40300", "subnet-0863e79f7fef1775c"] #CHANGE # Donot choose subnet from us-east-1e
   #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
   #vpc_id         = "vpc-1234556abcdef"
@@ -85,36 +88,36 @@ module "in28minutes-cluster" {
   }
 
 }
+### Uncomment this section after cluster creation line numbers 88 to 115###
+#resource "kubernetes_cluster_role_binding" "example" {
+#  metadata {
+#    name = "fabric8-rbac"
+#  }
+#  role_ref {
+#    api_group = "rbac.authorization.k8s.io"
+#    kind      = "ClusterRole"
+#    name      = "cluster-admin"
+#  }
+#  subject {
+#    kind      = "ServiceAccount"
+#    name      = "default"
+#    namespace = "default"
+#  }
+# }
 
-resource "kubernetes_cluster_role_binding" "example" {
-  metadata {
-    name = "fabric8-rbac"
-  }
-  role_ref {
-    api_group = "rbac.authorization.k8s.io"
-    kind      = "ClusterRole"
-    name      = "cluster-admin"
-  }
-  subject {
-    kind      = "ServiceAccount"
-    name      = "default"
-    namespace = "default"
-  }
-}
-
-# Create a secret. After version 1.23 there is no default secret
-resource "kubernetes_secret" "example" {
-  metadata {
-    annotations = {
-      "kubernetes.io/service-account.name" = "default"
-    }
-
-    generate_name = "terraform-default-"
-  }
-
-  type                           = "kubernetes.io/service-account-token"
-  wait_for_service_account_token = true
-}
+#resource "kubernetes_secret" "example" {
+#  metadata {
+#    annotations = {
+#      "kubernetes.io/service-account.name" = "default"
+#    }
+#
+#    generate_name = "terraform-default-"
+#  }
+#
+#  type                           = "kubernetes.io/service-account-token"
+#  wait_for_service_account_token = true
+# }
+### Uncomment this section after cluster creation ###
 
 # Needed to set the default region
 provider "aws" {
