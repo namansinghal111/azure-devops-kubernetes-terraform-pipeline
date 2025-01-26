@@ -11,7 +11,8 @@ required_providers {
       source = "hashicorp/aws"
       version = "5.84.0"
     }
-  backend "s3" {
+ }
+ backend "s3" {
     bucket = "mybucket" # Will be overridden from build
     key    = "path/to/my/key" # Will be overridden from build
     region = "us-east-1"
