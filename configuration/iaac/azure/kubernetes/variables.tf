@@ -7,7 +7,7 @@ variable environment {
 }
 
 variable location {
-    default = "westindia"
+    default = "jioindiacentral"
 }
 
 variable node_count {
