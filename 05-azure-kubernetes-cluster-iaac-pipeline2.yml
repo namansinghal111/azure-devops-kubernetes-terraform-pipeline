@@ -23,7 +23,7 @@ steps:
     backendServiceArm: 'azure-resource-manager-serice-connection2'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'tereraform-backend-rg'
-    backendAzureRmResourceGroupLocation: 'centralindia'
+    backendAzureRmResourceGroupLocation: 'southindia'
     backendAzureRmStorageAccountName: 'storageaccountnaman5'
     backendAzureRmContainerName: 'storageaccountnamancontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
