@@ -40,6 +40,12 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
 }
 
 terraform {
+required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.84.0"
+    }
+  }
   backend "azurerm" {
     # storage_account_name="<<storage_account_name>>" #OVERRIDE in TERRAFORM init
     # access_key="<<storage_account_key>>" #OVERRIDE in TERRAFORM init
