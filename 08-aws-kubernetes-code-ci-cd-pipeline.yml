@@ -30,7 +30,7 @@ stages:
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: '**/*.yaml'
-        TargetFolder: 'ta$(System.ArtifactStagingDirectory)'
+        TargetFolder: '$(System.ArtifactStagingDirectory)'
       
     - task: PublishBuildArtifacts@1
       inputs:
