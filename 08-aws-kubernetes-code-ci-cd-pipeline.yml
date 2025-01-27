@@ -54,6 +54,7 @@ stages:
         artifactName: 'manifests'
         itemPattern: '**/*.yaml'
         targetPath: '$(System.ArtifactsDirectory)'
+        
     - task: KubernetesManifest@0
       inputs:
         action: 'deploy'
